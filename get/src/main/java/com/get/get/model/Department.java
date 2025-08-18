@@ -14,10 +14,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "departments")
 public class Department {
-  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int dept_Id;
+  private Long dept_Id;
 
   @Column(nullable = false, unique = true)
   private String deptName;
@@ -28,15 +27,18 @@ public class Department {
   @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
   private List<Course> courses;
 
-  public int getDeptId() {
+  public Long getDeptId() {
     return this.dept_Id;
   }
-  public void setDeptId(int dept_Id) {
+
+  public void setDeptId(Long dept_Id) {
     this.dept_Id = dept_Id;
   }
+
   public String getDeptName() {
     return this.deptName;
   }
+
   public void setDeptName(String deptName) {
     this.deptName = deptName;
   }

@@ -28,8 +28,8 @@ public class Course {
   private Integer credits;
 
   @ManyToOne
-  @JoinColumn(name = "dept_id")
-  private Department departId;
+  @JoinColumn(name = "dept_Id")
+  private Department department;
 
   @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
   private List<Enrollment> enrollments;
@@ -53,9 +53,9 @@ public class Course {
     this.credits = credits;
   }
   public Department getDepartment() {
-    return this.departId;
+    return this.department;
   }
   public void setDepartment(Department departId) {
-    this.departId = departId;
+    this.department = departId;
   }
 }
