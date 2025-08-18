@@ -8,24 +8,26 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "departments")
-public class Department {
+@Table(name = "students")
+public class Student {
   
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private int dept_Id;
+  private Long student_Id;
 
   @Column(nullable = false, unique = true)
-  private String deptName;
-  
-  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-  private List<Student> students;
+  private String email;
 
-  @OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-  private List<Course> courses;
+  @ManyToOne
+  @JoinColumn(name = "dept_Id")
+  private Department department;
 
+  @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+  private List<Enrollment> enrollments;
 }
