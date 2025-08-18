@@ -20,7 +20,7 @@ public class StressMySql {
 
   public AtomicLong QPS = new AtomicLong(0);
 
-  Supplier<String> course = () -> {
+  Supplier<String> courseSupplier = () -> {
     Long departId = 0L;
     for (int i = 1; i <= 20; i++) {
       String courseName = "course" + i;
@@ -38,4 +38,17 @@ public class StressMySql {
     }
     return null;
   };
+
+  //suppiler for department
+  Supplier<Void> departmentSuppiler = () -> {
+    for (int i = 0; i < 4; i++) {
+      Department department = new Department();
+      department.setDeptName("Department" + i);
+      departmentRepo.save(department);
+      QPS.incrementAndGet();
+    }
+    return null;
+  };
+
+
 }
