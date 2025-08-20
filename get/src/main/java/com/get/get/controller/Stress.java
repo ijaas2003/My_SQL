@@ -10,8 +10,11 @@ import com.get.get.Service.StressService;
 @RestController
 @RequestMapping("/stress")
 public class Stress {
+  private StressService stressService;
+  public Stress(StressService stressService) {
+    this.stressService = stressService;
+  }
   private static final String START = "start";
-  StressService stressService = new StressService();
   @GetMapping("/stressTest")
   public String stressTest(@RequestParam String test) {
     String result = null;

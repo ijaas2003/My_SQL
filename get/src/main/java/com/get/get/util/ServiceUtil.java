@@ -1,11 +1,24 @@
 package com.get.get.util;
 
+import org.springframework.stereotype.Component;
+
 import com.get.get.api.StressAPI;
 
+@Component
 public class ServiceUtil implements StressAPI {
+
+  private StressMySql stressMySql;
+
+  public ServiceUtil(StressMySql stressMySql) {
+    this.stressMySql = stressMySql;
+  }
+
   @Override
   public String getData() {
     System.out.println("ServiceUtil: Processing getData with request: ");
+    System.out.println("ExecutorService: Started");
+    ExicutorServices<Void> executorServices = new ExicutorServices<>();
+    executorServices.PreProcesstest(stressMySql.courseSupplier, stressMySql.departmentSuppiler, null, null);
     return "Processed data retrieval";
   }
   @Override 

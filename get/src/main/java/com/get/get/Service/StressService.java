@@ -6,16 +6,17 @@ import com.get.get.Auth.StressAuthendication;
 
 @Service
 public class StressService {
+  private final StressAuthendication stressAuth;
+  public StressService(StressAuthendication stressAuth) {
+        this.stressAuth = stressAuth;
+    }
 
-  
   public String getData() {
-    StressAuthendication stressAuth = new StressAuthendication();
     stressAuth.getData();
     return "Data retrieved successfully";
   }
 
   public String updateData(String requestBody) {
-    StressAuthendication stressAuth = new StressAuthendication();
     stressAuth.getData();
     return "Data updated successfully";
   }

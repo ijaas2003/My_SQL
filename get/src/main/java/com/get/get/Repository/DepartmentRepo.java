@@ -1,9 +1,9 @@
 package com.get.get.Repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.get.get.model.Department;
 
-public interface DepartmentRepo extends JpaRepository<Department, Long> {
-
-}
+@Repository
+public interface DepartmentRepo extends JpaRepository<Department, Long> {}

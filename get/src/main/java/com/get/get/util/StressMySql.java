@@ -9,7 +9,9 @@ import com.get.get.model.Course;
 import com.get.get.model.Department;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+/**
+ * @author - Ijaas ahamad.m
+ */
 @Component
 public class StressMySql {
   @Autowired
@@ -20,8 +22,13 @@ public class StressMySql {
 
   public AtomicLong QPS = new AtomicLong(0);
 
-  Supplier<String> courseSupplier = () -> {
-    Long departId = 0L;
+  /* 
+   * @param courseSupplier - Supplier for creating courses
+   * @param departmentSuppiler - Supplier for creating departments
+   * @param student - Supplier for creating students (not used in this example)
+   */ 
+  Supplier<Void> courseSupplier = () -> {
+    Long departId = 1L;
     for (int i = 1; i <= 20; i++) {
       String courseName = "course" + i;
       if (i % 4 == 0) {
